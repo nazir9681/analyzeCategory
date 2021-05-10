@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4 text-center">{{context.catId}}|{{context.catName}}</h1>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add SubCategory</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New SubCategory</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="saveSubCategory">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">SubCategory Name:</label>
+            <input type="text" class="form-control" id="subcategoryname" name="subcategoryname">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">SubCategory Title:</label>
+            <input type="text" class="form-control" id="subcategorytitle" name="subcategorytitle">
+          </div>
+          <input type="hidden" id="categoryid" name="categoryid" value="{{ context.catId }}">
+          <input type="hidden" id="categoryname" name="categoryname" value="{{ context.catName }}">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" id="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="tableList">
+
+</div>
+  </div>
+  <script src = "{{ url_for('static', filename = 'js/subcategory.js') }}" ></script>
+{% endblock %}
